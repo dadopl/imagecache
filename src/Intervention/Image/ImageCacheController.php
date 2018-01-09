@@ -125,16 +125,19 @@ class ImageCacheController extends BaseController
     protected function getImagePath($filename)
     {
         // find file
-        foreach (config('imagecache.paths') as $path) {
+        foreach ($image_cache_paths = config('imagecache.paths') as $path) {
             // don't allow '..' in filenames
             $image_path = $path.'/'.str_replace('..', '', $filename);
             if (file_exists($image_path) && is_file($image_path)) {
                 // file found
                 return $image_path;
             }
+            else{
+                return $image_cache_paths[0] . '/' . config('imagecache.placeholder');
+            }
         }
 
-        // file not found
+        // file and placeholder not found
         abort(404);
     }
 

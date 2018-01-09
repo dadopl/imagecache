@@ -68,4 +68,15 @@ return array(
    
     'lifetime' => 43200,
 
+
+    /*
+   |--------------------------------------------------------------------------
+   | Default image path/name if not exist source
+   |--------------------------------------------------------------------------
+   |
+   | path/name in storage path
+   |
+   */
+
+    'placeholder' => 'default.jpg'
 );
